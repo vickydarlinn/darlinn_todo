@@ -5,7 +5,7 @@ const loginExistingUser = createAsyncThunk(
   "login",
   async ({ email, password }) => {
     const response = await axios.post(
-      "https://darlinn-todo.onrender.com/api/api/v1/user/login",
+      `${process.env.REACT_APP_SERVER_URL}/api/v1/user/login`,
       {
         email,
         password,

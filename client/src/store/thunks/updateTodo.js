@@ -5,7 +5,7 @@ const updateTodo = createAsyncThunk(
   "todo/update",
   async ({ authToken, id, title }) => {
     const response = await axios.patch(
-      `http://localhost:5500/api/v1/todos/${id}`,
+      `${process.env.REACT_APP_SERVER_URL}/api/v1/todos/${id}`,
       {
         title,
       },

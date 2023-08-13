@@ -5,7 +5,7 @@ const deleteTodo = createAsyncThunk(
   "todo/delete",
   async ({ authToken, id }) => {
     const response = await axios.delete(
-      `http://localhost:5500/api/v1/todos/${id}`,
+      `${process.env.REACT_APP_SERVER_URL}/api/v1/todos/${id}`,
       {
         headers: {
           Authorization: authToken,

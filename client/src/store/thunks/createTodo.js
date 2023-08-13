@@ -5,7 +5,7 @@ const createTodo = createAsyncThunk(
   "todo/create",
   async ({ authToken, title }) => {
     const response = await axios.post(
-      "http://localhost:5500/api/v1/todos",
+      `${process.env.REACT_APP_SERVER_URL}/api/v1/todos`,
       {
         title,
       },
