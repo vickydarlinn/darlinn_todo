@@ -5,7 +5,7 @@ const createNewUser = createAsyncThunk(
   "create",
   async ({ name, email, password }) => {
     const response = await axios.post(
-      "http://localhost:5500/api/v1/user/register",
+      "https://darlinn-todo.onrender.com/api/v1/user/register",
       {
         name,
         email,
