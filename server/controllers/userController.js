@@ -32,6 +32,8 @@ exports.loginUser = async (req, res) => {
     res.status(200).json({
       message: "logged in successfully",
       token,
+      name: userFromDB.name,
+      email: userFromDB.email,
     });
   } catch (error) {
     res.status(404).json({
@@ -65,6 +67,8 @@ exports.registerUser = async (req, res) => {
     res.status(201).json({
       message: "user created",
       token,
+      name: registeredUser.name,
+      email: registeredUser.email,
     });
   } catch (error) {
     res.status(404).json({
