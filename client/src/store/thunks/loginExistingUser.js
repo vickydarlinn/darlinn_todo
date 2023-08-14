@@ -45,10 +45,8 @@ const loginExistingUser = createAsyncThunk(
       }
 
       const responseData = await response.json();
-      console.log(responseData);
       return responseData;
     } catch (error) {
-      console.log("An error occurred:", error);
       throw error;
     }
   }

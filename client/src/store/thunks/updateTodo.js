@@ -15,7 +15,6 @@ const updateTodo = createAsyncThunk(
         },
       }
     );
-    console.log(response.data);
     return response.data;
   }
 );

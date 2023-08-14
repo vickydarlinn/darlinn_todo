@@ -57,7 +57,7 @@ const TodoCard = ({ todo }) => {
     return (
       <>
         <ToastContainer />
-        <div className="flex items-center gap-6 p-2  bg-black rounded-3xl ">
+        <form className="flex items-center gap-6 p-2  bg-black rounded-3xl ">
           <input
             type="text"
             className="grow p-2 bg-gray-500 rounded-3xl focus:outline-none focus:bg-gray-700"
@@ -74,12 +74,13 @@ const TodoCard = ({ todo }) => {
           ) : (
             <button
               onClick={() => handleUpdatedTitle(todo)}
+              type="submit"
               className="cursor-pointer bg-gray-500 px-4 py-2 rounded-3xl min-w-[100px]"
             >
               Save
             </button>
           )}
-        </div>
+        </form>
       </>
     );
   }

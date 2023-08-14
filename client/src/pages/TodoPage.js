@@ -16,7 +16,6 @@ const TodoPage = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log("ji");
     dispatch(getAllTodos(authToken));
   }, [authToken, dispatch]);
 

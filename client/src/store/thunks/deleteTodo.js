@@ -12,7 +12,6 @@ const deleteTodo = createAsyncThunk(
         },
       }
     );
-    console.log(response.data);
     return response.data;
   }
 );

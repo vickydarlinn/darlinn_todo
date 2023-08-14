@@ -1,9 +1,13 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
+
 import { AiOutlineMenu } from "react-icons/ai";
 import { ImCross } from "react-icons/im";
 import { Link } from "react-router-dom";
 
 const Header = () => {
+  const { isLoggedIn } = useSelector((state) => state.user);
+
   const [menuOpen, setMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -16,9 +20,15 @@ const Header = () => {
   return (
     <header className="bg-black text-white p-4 flex justify-between items-center">
       <div className="flex items-center">
-        <Link to={"/"} className="text-2xl font-bold">
-          Darlinn Todo
-        </Link>
+        {isLoggedIn ? (
+          <Link to={"/todos"} className="text-2xl font-bold">
+            Darlinn Todo
+          </Link>
+        ) : (
+          <Link to={"/"} className="text-2xl font-bold">
+            Darlinn Todo
+          </Link>
+        )}
       </div>
       <div className="relative">
         <button
