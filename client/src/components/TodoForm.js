@@ -34,6 +34,7 @@ const TodoForm = () => {
       })
       .finally(() => {
         setIsLoading(false);
+        setNewTodo("");
       });
     //
   };
