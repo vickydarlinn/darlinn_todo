@@ -3,10 +3,12 @@ import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { createNewUser } from "../store/thunks/createNewUser";
 import { useNavigate } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
 
 const SignupPage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [isLoading, setIsLoading] = useState(false);
   const [userDetails, setUserDetails] = useState({
     name: "",
     email: "",
@@ -20,16 +22,26 @@ const SignupPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setIsLoading(true);
     dispatch(createNewUser(userDetails))
       .unwrap()
       .then(() => {
-        console.log("logged in successfully");
-        navigate("/todos");
+        toast.success("Account created successfully!", {});
+        setTimeout(() => {
+          navigate("/todos");
+        }, 3000);
+      })
+      .catch((err) => {
+        toast.error(`${err.message}`, {});
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
   };
 
   return (
     <>
+      <ToastContainer />
       <div className="min-h-screen bg-black text-white flex flex-col justify-center items-center px-4">
         <h1 className="text-4xl font-bold mb-8">Sign Up</h1>
         <form className="w-full max-w-sm" onSubmit={handleSubmit}>
@@ -80,12 +92,29 @@ const SignupPage = () => {
               value={userDetails.password}
             />
           </div>
-          <button
+          {isLoading ? (
+            <button
+              className="w-full bg-green-700 cursor-wait px-4 py-2 rounded text-white"
+              type="button"
+              disabled={true}
+            >
+              Loading...
+            </button>
+          ) : (
+            <button
+              className="w-full bg-green-500 hover:bg-green-600 px-4 py-2 rounded text-white"
+              type="submit"
+            >
+              Sign Up
+            </button>
+          )}
+
+          {/* <button
             className="w-full bg-green-500 hover:bg-green-600 px-4 py-2 rounded text-white"
             type="submit"
           >
             Sign Up
-          </button>
+          </button> */}
         </form>
         <p className="text-sm mt-4">
           Already have an account?{" "}

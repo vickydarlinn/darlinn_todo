@@ -9,6 +9,9 @@ const Header = () => {
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
+  const handleLogout = () => {
+    window.location.reload();
+  };
 
   return (
     <header className="bg-black text-white p-4 flex justify-between items-center">
@@ -37,7 +40,10 @@ const Header = () => {
                 {" "}
                 Settings
               </Link>
-              <Link className="px-4 py-2 hover:bg-gray-700 cursor-pointer">
+              <Link
+                className="px-4 py-2 hover:bg-gray-700 cursor-pointer"
+                onClick={handleLogout}
+              >
                 Logout
               </Link>
             </div>

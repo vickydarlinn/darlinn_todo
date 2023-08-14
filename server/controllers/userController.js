@@ -9,7 +9,7 @@ exports.loginUser = async (req, res) => {
     // check is user exists in database
     if (!userFromDB) {
       return res.status(409).json({
-        error: "wrong credentials",
+        message: "wrong credentials",
       });
     }
     // check the user password
@@ -19,7 +19,7 @@ exports.loginUser = async (req, res) => {
     );
     if (!isPasswordValid) {
       return res.status(409).json({
-        error: "wrong credentials",
+        message: "wrong credentials",
       });
     }
     //generating the web token for the user
@@ -37,7 +37,7 @@ exports.loginUser = async (req, res) => {
     });
   } catch (error) {
     res.status(404).json({
-      error: error.message || error,
+      message: error.message || error,
     });
   }
 };
@@ -49,7 +49,7 @@ exports.registerUser = async (req, res) => {
     const isUserExist = await User.findOne({ email: newUserDetails.email });
     if (isUserExist) {
       return res.status(409).json({
-        error: "User already registered",
+        message: "User already registered",
       });
     }
     // byrcrypting the password and saving in the backend.
@@ -72,7 +72,7 @@ exports.registerUser = async (req, res) => {
     });
   } catch (error) {
     res.status(404).json({
-      error: error.message || error,
+      message: error.message || error,
     });
   }
 };
